@@ -9,15 +9,24 @@ function playOneRound(playerSelection, computerSelection) {
   const computerMove = computerSelection;
 
   if (playerMove === computerMove) {
-    return `Its a tie! You both choose ${playerMove}`;
+    return {
+      string: `Its a tie! You both choose ${playerMove}`,
+      tie: true,
+    };
   } else if (
     (playerMove === "rock" && computerMove === "scissors") ||
     (playerMove === "paper" && computerMove === "rock") ||
     (playerMove === "scissors" && computerMove === "paper")
   ) {
-    return `You Win! ${playerMove} beats ${computerMove}`;
+    return {
+      string: `You Win! ${playerMove} beats ${computerMove}`,
+      youWin: true,
+    };
   } else {
-    return `You lose! ${computerMove} beats ${playerMove}`;
+    return {
+      string: `You lose! ${computerMove} beats ${playerMove}`,
+      youWin: false,
+    };
   }
 }
 
@@ -32,11 +41,11 @@ function game() {
     );
 
     const result = playOneRound(playerSelection, computerSelection);
-    console.log(result);
+    console.log(result.string);
 
-    if (result.startsWith("You Win!")) {
+    if (result.youWin) {
       playerScore++;
-    } else if (result.startsWith("You lose!")) {
+    } else if (!result.youWin && !result.tie) {
       computerScore++;
     }
   }
@@ -45,8 +54,4 @@ function game() {
   );
 }
 
-// const computerSelection = getComputerChoice();
-// const playerSelection = prompt("Choose a move, Rock, Paper or Scissors");
-
-// console.log(playOneRound(playerSelection, computerSelection));
 game();
