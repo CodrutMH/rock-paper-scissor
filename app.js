@@ -30,28 +30,28 @@ function playOneRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
+// function game() {
+//   let playerScore = 0;
+//   let computerScore = 0;
 
-  for (let round = 0; round < 5; round++) {
-    const computerSelection = getComputerChoice();
-    const playerSelection = prompt(
-      'Round ' + (round + 1) + ' Choose a move, Rock, Paper or Scissors'
-    );
+//   for (let round = 0; round < 5; round++) {
+//     const computerSelection = getComputerChoice();
+//     const playerSelection = prompt(
+//       'Round ' + (round + 1) + ' Choose a move, Rock, Paper or Scissors'
+//     );
 
-    const result = playOneRound(playerSelection, computerSelection);
-    console.log(result.string);
+//     const result = playOneRound(playerSelection, computerSelection);
+//     console.log(result.string);
 
-    if (result.youWin) {
-      playerScore++;
-    } else if (!result.youWin && !result.tie) {
-      computerScore++;
-    }
-  }
-  console.log(
-    `Your score is: ${playerScore} and computer score is: ${computerScore}`
-  );
-}
+//     if (result.youWin) {
+//       playerScore++;
+//     } else if (!result.youWin && !result.tie) {
+//       computerScore++;
+//     }
+//   }
+//   console.log(
+//     `Your score is: ${playerScore} and computer score is: ${computerScore}`
+//   );
+// }
 
 game();
