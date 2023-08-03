@@ -1,5 +1,5 @@
 function getComputerChoice() {
-  const moves = ["rock", "paper", "scissors"];
+  const moves = ['rock', 'paper', 'scissors'];
   let randomMove = Math.floor(Math.random() * moves.length);
   return moves[randomMove];
 }
@@ -14,9 +14,9 @@ function playOneRound(playerSelection, computerSelection) {
       tie: true,
     };
   } else if (
-    (playerMove === "rock" && computerMove === "scissors") ||
-    (playerMove === "paper" && computerMove === "rock") ||
-    (playerMove === "scissors" && computerMove === "paper")
+    (playerMove === 'rock' && computerMove === 'scissors') ||
+    (playerMove === 'paper' && computerMove === 'rock') ||
+    (playerMove === 'scissors' && computerMove === 'paper')
   ) {
     return {
       string: `You Win! ${playerMove} beats ${computerMove}`,
@@ -37,7 +37,7 @@ function game() {
   for (let round = 0; round < 5; round++) {
     const computerSelection = getComputerChoice();
     const playerSelection = prompt(
-      "Round " + (round + 1) + " Choose a move, Rock, Paper or Scissors"
+      'Round ' + (round + 1) + ' Choose a move, Rock, Paper or Scissors'
     );
 
     const result = playOneRound(playerSelection, computerSelection);
