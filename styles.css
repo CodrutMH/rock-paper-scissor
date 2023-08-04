@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
-
 :root {
-  --primaryff: sans-serif;
+  --primaryff: 'Electrolize', sans-serif;
 }
 * {
   margin: 0;
