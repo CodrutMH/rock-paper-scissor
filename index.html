@@ -21,27 +21,30 @@
       <div class="playing">
         <div class="player">
           <h2>You Choose:</h2>
-          <span><img src="/images/rock.png" alt="" /></span>
-          <p class="score">Score: <span id="player-score">0</span></p>
+          <span id="player-score"><img src="/images/rock.png" alt="" /></span>
+          <p class="score">Score: <span id="player-scores">0</span></p>
         </div>
         <div class="computer">
           <h2>Computer Choose:</h2>
-          <span><img src="/images/paper.png" alt="" /></span>
-          <p class="score">Score: <span id="computer-score">0</span></p>
+          <span id="computer-score"
+            ><img src="/images/paper.png" alt=""
+          /></span>
+          <p class="score">Score: <span id="computer-scores">0</span></p>
         </div>
       </div>
 
       <div class="choice">
-        <button class="btn" id="btn">
+        <button class="btn" id="rock">
           <img src="images/rock.png" alt="" />
         </button>
-        <button class="btn" id="btn">
+        <button class="btn" id="paper">
           <img src="images/paper.png" alt="" />
         </button>
-        <button class="btn" id="btn">
+        <button class="btn" id="scissors">
           <img src="images/scissors.png" alt="" />
         </button>
       </div>
+      <button class="reset" id="reset-score">RESET SCORE</button>
     </div>
 
     <script src="app.js"></script>

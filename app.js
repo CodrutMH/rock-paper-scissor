@@ -1,57 +1,74 @@
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+
+const playerScore = document.getElementById('player-score');
+const computerScore = document.getElementById('computer-score');
+const displayPlayerScore = document.getElementById('player-scores');
+const displayComputerScore = document.getElementById('computer-scores');
+const reset = document.getElementById('reset-score');
+
+let playerScor = 0;
+let computerScor = 0;
+
 function getComputerChoice() {
   const moves = ['rock', 'paper', 'scissors'];
   let randomMove = Math.floor(Math.random() * moves.length);
   return moves[randomMove];
 }
 
-function playOneRound(playerSelection, computerSelection) {
+function playOneRound(playerSelection) {
   const playerMove = playerSelection.toLowerCase();
-  const computerMove = computerSelection;
+  const computerMove = getComputerChoice();
 
-  if (playerMove === computerMove) {
-    return {
-      string: `Its a tie! You both choose ${playerMove}`,
-      tie: true,
-    };
-  } else if (
+  if (
     (playerMove === 'rock' && computerMove === 'scissors') ||
     (playerMove === 'paper' && computerMove === 'rock') ||
     (playerMove === 'scissors' && computerMove === 'paper')
   ) {
-    return {
-      string: `You Win! ${playerMove} beats ${computerMove}`,
-      youWin: true,
-    };
+    playerScor++;
+    displayPlayerScore.textContent = playerScor;
   } else {
-    return {
-      string: `You lose! ${computerMove} beats ${playerMove}`,
-      youWin: false,
-    };
+    computerScor++;
+    displayComputerScore.textContent = computerScor;
+  }
+  if (playerScor >= 6) {
+    winner('Player won the Game!');
+    displayPlayerScore.textContent = 0;
+  } else if (computerScor >= 6) {
+    winner('Computer won the Game!');
+    displayComputerScore.textContent = 0;
   }
 }
 
-// function game() {
-//   let playerScore = 0;
-//   let computerScore = 0;
+function updateImage(playerImage, computerImage) {
+  playerScore.innerHTML = `<img src="/images/${playerImage}.png" alt="" />`;
+  computerScore.innerHTML = `<img src="/images/${computerImage}.png" alt="" />`;
+}
 
-//   for (let round = 0; round < 5; round++) {
-//     const computerSelection = getComputerChoice();
-//     const playerSelection = prompt(
-//       'Round ' + (round + 1) + ' Choose a move, Rock, Paper or Scissors'
-//     );
+rock.addEventListener('click', function () {
+  const computer = getComputerChoice();
+  playOneRound('rock');
+  updateImage('rock', computer);
+});
+paper.addEventListener('click', function () {
+  const computer = getComputerChoice();
+  playOneRound('paper');
 
-//     const result = playOneRound(playerSelection, computerSelection);
-//     console.log(result.string);
+  updateImage('paper', computer);
+});
+scissors.addEventListener('click', function () {
+  const computer = getComputerChoice();
+  playOneRound('scissors');
 
-//     if (result.youWin) {
-//       playerScore++;
-//     } else if (!result.youWin && !result.tie) {
-//       computerScore++;
-//     }
-//   }
-//   console.log(
-//     `Your score is: ${playerScore} and computer score is: ${computerScore}`
-//   );
-// }
+  updateImage('scissors', computer);
+});
+reset.addEventListener('click', function () {
+  displayPlayerScore.textContent = 0;
+  displayComputerScore.textContent = 0;
+});
 
-game();
+function winner(winner) {
+  const showWinner = document.getElementById('winner');
+  showWinner.textContent = winner;
+}
